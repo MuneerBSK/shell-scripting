@@ -11,3 +11,6 @@ Then we will automate the infrastructure provisioning
 And then configuration management
 
 This is to generate PAT
+
+# Bash Scripting Agenda
+
