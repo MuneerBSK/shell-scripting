@@ -6,6 +6,6 @@
 
 # Along with linux bash syntax
 
-# Then we will automate the infrastryucture provisioning
+# Then we will automate the infrastructure provisioning
 
 # And then configuration management
