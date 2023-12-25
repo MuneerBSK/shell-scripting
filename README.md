@@ -10,4 +10,4 @@
 
 # And then configuration management
 
-this is to generate PAT
+This is to generate PAT
