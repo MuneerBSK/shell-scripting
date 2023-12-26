@@ -18,3 +18,5 @@ echo line3
 
   #  " : Double quotes
   #  '': Single quote
+
+  echo -e "lineA\nlineB"
