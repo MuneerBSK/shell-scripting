@@ -14,7 +14,7 @@ This is to generate PAT
 
 # Bash Scripting Agenda
 
-Follwoing are the shell scripting topics which we discuss as a part of our project
+Following are the shell scripting topics which we discuss as a part of our project
 
 1. SheBang Notation and Comments
 2. Printing
