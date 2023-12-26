@@ -10,4 +10,11 @@ echo line3
   #   \t : It moves the cursor to a tab space and then prints the next line
 
 
-  echo line1\nline2
+  echo lineX\nlineY
+
+  # To use escape sequence characters, you need to enable the escape sequence using option called '-e'
+
+  echo - e"lineX\nlineY"
+
+  #  " : Double quotes
+  #  '': Single quote
