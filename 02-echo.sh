@@ -14,7 +14,7 @@ echo line3
 
   # To use escape sequence characters, you need to enable the escape sequence using option called '-e'
 
-  echo - e "lineX\nlineY"
+  echo -e "lineX\nlineY"
 
   #  " : Double quotes
   #  '': Single quote
