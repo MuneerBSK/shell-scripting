@@ -6,7 +6,7 @@ echo line3
 
 # How to print multiple lines using single echo command?
      # to do so we need to use escape sequence characters
-  #   \n : It telss the ssytem to move the cursor to the next line
+  #   \n : It tells the sytem to move the cursor to the next line
   #   \t : It moves the cursor to a tab space and then prints the next line
 
 
