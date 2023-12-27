@@ -55,7 +55,7 @@ echo "Demonstrating simpke If conditions"
 ACTION=$1
 
 if { "$ACTION" == "start" }; then
-    echo -e "\e[33m Service payment is strating \e[0m"
+    echo -e "\e[33m Service payment is starting \e[0m"
 
 else 
     echo -e "\e[31m Service Payment status is unknown \e[0m"
