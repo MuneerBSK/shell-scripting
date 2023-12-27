@@ -47,5 +47,17 @@ Simple If :
         command 4
     
     fi
-    
+
 COMMENT
+
+echo "Demonstrating simpke If conditions
+
+ACTION=$1
+
+if { "ACTION" == "strat" } ; then
+    echo -e "\e[33m Service payment is strating \e[0m"
+
+else 
+    echo -e "\e[31 Service Payment status is unknown \e[0m"
+
+Fi
