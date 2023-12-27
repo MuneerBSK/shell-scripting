@@ -54,7 +54,7 @@ echo "Demonstrating simpke If conditions"
 
 ACTION=$1
 
-if { "ACTION" == "strat" } ; then
+if { "$ACTION" == "start" }; then
     echo -e "\e[33m Service payment is strating \e[0m"
 
 else 
