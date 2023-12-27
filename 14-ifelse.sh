@@ -50,7 +50,7 @@ Simple If :
 
 COMMENT
 
-echo "Demonstrating simpke If conditions
+echo "Demonstrating simpke If conditions"
 
 ACTION=$1
 
