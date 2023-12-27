@@ -8,6 +8,8 @@
 
 # esac
 
+ACTION=$1
+
 case $ACTION in
 
      start)
@@ -19,3 +21,4 @@ case $ACTION in
      restart)
          echo "Restarting payment service"
          ;;
+esac
