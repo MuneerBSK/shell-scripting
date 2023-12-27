@@ -17,4 +17,8 @@
 #      echo -e "\e[COL-CODEm  Your message to be printed \e[0m"
 #      echo -e "\e[C32m I am printing green colour \e[0m"
 
-echo -e "\e[32m I am rpinting green colour \e[0m"
+echo -e "\e[31m I am printing red colour \e[0m"
+echo -e "\e[32m I am printing green colour \e[0m"
+echo -e "\e[33m I am printing yellow colour \e[0m"
+echo -e "\e[34m I am printing blue colour \e[0m"
+echo -e "\e[35m I am printing magenta colour \e[0m"
