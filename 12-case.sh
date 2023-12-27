@@ -25,7 +25,7 @@ case $ACTION in
          exit 3
          ;;
      *)
-         echo -e "Valid options are \e[35m start or stop or restart \e[0m"
+         echo -e "Valid options are \e[36m start or stop or restart \e[0m"
          exit 4
          ;;
 esac
