@@ -14,5 +14,5 @@ c=30
 # echo $a
 
 echo $A
-echo ${a}
+echo ${b}
 echo "$c"
