@@ -12,4 +12,4 @@
 
 for val in 10 20 30 40 50 ; do 
     echo "value of a in the list is : $val "
-done 
+done
