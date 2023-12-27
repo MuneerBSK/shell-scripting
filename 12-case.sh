@@ -21,4 +21,7 @@ case $ACTION in
      restart)
          echo -e "\e[35m Restarting payment service \e[0m"
          ;;
+     *)
+         echo -e "Valid options are \e[32m start or stop or restart \e[0m"
+         ;;
 esac
