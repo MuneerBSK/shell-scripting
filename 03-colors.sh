@@ -27,4 +27,4 @@ echo -e "\e[35m I am printing magenta colour \e[0m"
 
 #   echo -e "\e[BackGroundCOL-CODE;ForeGroundColorm  Your Message To Be Printed \e[0m"
 
-echo -e "\e[40;30m I am printing abckground and foreground colors \e[0m"
+echo -e "\e[35;43m I am printing background and foreground colors \e[0m"
