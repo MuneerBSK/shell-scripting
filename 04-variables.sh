@@ -13,6 +13,8 @@ c=30
 # We iuse a special character, called $ to print.
 # echo $a
 
-echo $A
-echo ${b}
+echo $a
+echo ${a}
 echo "$c"
+
+echo "I am printing the value of d $d"
