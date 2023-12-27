@@ -8,7 +8,7 @@
 a=10 
 echo "Printing the value of a : $a" 
 
-echo 'Printing the value of a : $a with single quores' 
+echo 'Printing the value of a : $a with single quotes' 
 
 echo $? 
 
