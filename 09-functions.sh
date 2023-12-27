@@ -12,8 +12,9 @@
 sample() {
     echo "I am a messaged called from sample function"
 }
-sample
-sample
-sample
-sample
-sample
+
+# This how we call a function.
+stat() {
+    echo "total number of sessions : $(who | wc -l)"
+    echo "Todays date is $(date +%F)"
+}
