@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/bash 
 
-echo "Iam a robot-wrapper"
+bash components/$1.sh
