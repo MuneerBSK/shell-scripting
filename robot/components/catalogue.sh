@@ -67,7 +67,7 @@ echo -n "Starting the service :"
 systemctl daemon-reload     &>> $LOGFILE
 systemctl enable $COMPONENT &>> $LOGFILE
 systemctl start $COMPONENT  &>> $LOGFILE
-
+stat $?
 
 # $ vim systemd.servce
 
