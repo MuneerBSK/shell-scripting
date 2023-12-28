@@ -68,15 +68,3 @@ systemctl daemon-reload     &>> $LOGFILE
 systemctl enable $COMPONENT &>> $LOGFILE
 systemctl start $COMPONENT  &>> $LOGFILE
 stat $?
-
-
-
-
-# NOTE: You should see the log saying `connected to MongoDB`
-
-# Ref Log: {"level":"info","time":1656660782066,"pid":12217,"hostname":"ip-172-31-13-123.ec2.internal","msg":"MongoDB connected","v":1}
-
-# vim /etc/nginx/default.d/roboshop.conf
-# Reload and restart the Nginx service.
-
- # systemctl restart nginx
