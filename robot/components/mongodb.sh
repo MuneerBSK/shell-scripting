@@ -10,7 +10,7 @@ if [ "$ID" -ne 0 ] ; then
     exit 1
 fi
 
-COMPONENT="mongod"
+COMPONENT="mongodb"
 LOGFILE="/tmp/$COMPONENT.log"
 
 stat () {
