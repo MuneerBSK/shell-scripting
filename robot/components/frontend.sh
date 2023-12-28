@@ -2,7 +2,7 @@
 
 set -e
 
-COMPONENT= "frontend"
+COMPONENT= frontend
 LOGFILE= "/tmp/$COMPONENT.log"
 
 # validating whether the executed user is root user or not
