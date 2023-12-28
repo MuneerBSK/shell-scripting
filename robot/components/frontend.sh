@@ -47,4 +47,3 @@ echo -n "Starting the service : "
 systemctl enable nginx &>> $LOGFILE
 systemctl start nginx &>> $LOGFILE
 stat $? 
-

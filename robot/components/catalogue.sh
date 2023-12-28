@@ -45,7 +45,7 @@ unzip /tmp/$COMPONENT.zip   $>> $LOGFILE
 stat $?
 
 
-# $ unzip /tmp/catalogue.zip
+# $ unzip /tmp/catalogue.zi
 # $ mv catalogue-main catalogue
 # $ cd /home/roboshop/catalogue
 # $ npm install
