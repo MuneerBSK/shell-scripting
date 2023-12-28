@@ -10,7 +10,7 @@ if [ "$ID" -ne 0 ] ; then
     exit 1
 fi
 
-COMPONENT="nodejs"
+COMPONENT="catalogue"
 LOGFILE="/tmp/$COMPONENT.log"
 APPUSER=roboshop
 
