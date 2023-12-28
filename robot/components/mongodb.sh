@@ -39,7 +39,7 @@ echo -n "Updating the $COMPONENT visibility :"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat $?
 
-echo -n " Performing daemon-reload :"
+echo -n "Performing daemon-reload :"
 systemctl daemon-reload    &>> LOGFILE
 systemctl restart mongod   &>> LOGFILE
 stat $?
