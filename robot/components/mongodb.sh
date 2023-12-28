@@ -20,32 +20,31 @@ stat () {
     fi 
 }
 
-# Configuring MongoDB repository
 echo -n "Configuring the $COMPONENT repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $? "Configuring the $COMPONENT repo"
 
-# Installing MongoDB
+
 echo -n "Installing $COMPONENT :"
 yum install -y mongodb-org &>> $LOGFILE
-stat $? "Installing $COMPONENT"
+stat $? 
 
-# Starting MongoDB
+
 echo -n "Starting $COMPONENT :"
 systemctl enable mongod &>> $LOGFILE
 systemctl start mongod &>> $LOGFILE
-stat $? "Starting $COMPONENT"
+stat $? 
 
-# Updating MongoDB visibility
+
 echo -n "Updating the $COMPONENT visibility : "
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
-stat $? "Updating the $COMPONENT visibility"
+stat $? 
 
-# Performing Daemon-reload and restarting MongoDB
+
 echo -n "Performing Daemon-reload : "
 systemctl daemon-reload &>> $LOGFILE
 systemctl restart mongod &>> $LOGFILE
-stat $? "Performing Daemon-reload and restarting $COMPONENT"
+stat $? 
 
 
 # # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
