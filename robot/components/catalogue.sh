@@ -47,6 +47,10 @@ cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
+echo -n "Configuring the permissions :"
+cd /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
+
 
 # $ unzip /tmp/catalogue.zi
 # $ mv catalogue-main catalogue
