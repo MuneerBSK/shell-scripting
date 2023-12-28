@@ -26,12 +26,12 @@ stat $? "Installing nginx"
 
 echo -n "Downloading the $COMPONENT component :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
-stat $? "Downloading the $COMPONENT component"
+stat $? 
 
 echo -n "Performing cleanup of old $COMPONENT content : "
 cd /usr/share/nginx/html
 rm -rf * &>> $LOGFILE
-stat $? "Performing cleanup of old $COMPONENT content"
+stat $? 
 
 echo -n "Copying the downloaded $COMPONENT content : "
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
@@ -39,10 +39,9 @@ mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
-stat $? "Copying the downloaded $COMPONENT content"
+stat $? 
 
 echo -n "Starting the service : "
 systemctl enable nginx &>> $LOGFILE
 systemctl start nginx &>> $LOGFILE
-stat $? "Starting the service"
-
+stat $? 
