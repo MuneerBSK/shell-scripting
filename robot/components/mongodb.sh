@@ -24,27 +24,27 @@ echo -n "Configuring the $COMPONENT repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $?
 
-echo -n "Installing $COMPONENT"
+echo -n "Installing $COMPONENT :"
 yum install -y mongodb-org   &>> $LOGFILE
 stat $?
 
+echo -n "Starting $COMPONENT :"
+systemctl enable mongod     &>> $LOGFILE
+systemctl start mongod      &>> $LOGFILE
+stat $?
+
+# Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
+
+# Config file:   `# vim /etc/mongod.conf`
 
 
-systemctl enable mongod
-systemctl start mongod
-
-Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
-
-Config file:   `# vim /etc/mongod.conf`
+# systemctl restart mongod
 
 
-systemctl restart mongod
+# # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
 
-
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
-
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+# # cd /tmp
+# # unzip mongodb.zip
+# # cd mongodb-main
+# # mongo < catalogue.js
+# # mongo < users.js
