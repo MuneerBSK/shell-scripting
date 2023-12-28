@@ -16,7 +16,7 @@ stat () {
      else
         echo -e "\e[31m Failure \e[0m"
         exit 2
-fi 
+     fi 
 }
 
 echo -n "Installing nginx : "
