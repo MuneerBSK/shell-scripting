@@ -53,14 +53,25 @@ cd /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
-# $ unzip /tmp/catalogue.zi
-# $ mv catalogue-main catalogue
-# $ cd /home/roboshop/catalogue
-# $ npm install
+echo -n"Installing the $COMPONENT application :"
+cd /home/$APPUSER/$COMPONENT
+npm install   &>> $LOGFILE
+stat $?
+
+echo -n "Updating the systemd file with DB details :"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/'  /home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
+
+echo -n "Starting the service :"
+systemctl daemon-reload     &>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
+systemctl start $COMPONENT  &>> $LOGFILE
+
 
 # $ vim systemd.servce
 
-# mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+# 
 # systemctl daemon-reload
 # systemctl start catalogue
 # systemctl enable catalogue
