@@ -35,13 +35,19 @@ systemctl enable mongod   &>> LOGFILE
 systemctl start mongod    &>> LOGFILE
 stat $?
 
+echo -n "Updating the $COMPONENT visibility :"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+stat $?
+
+echo -n " Performing daemon-reload :"
+systemctl daemon-reload    &>> LOGFILE
+systemctl restart mongod   &>> LOGFILE
+stat $?
+
+
 # Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
 
 # vim /etc/mongod.conf
-
-# systemctl restart mongod
-
-
   
 
 # Every Database needs the schema to be loaded for the application to work.
