@@ -44,18 +44,16 @@ systemctl daemon-reload    &>> LOGFILE
 systemctl restart mongod   &>> LOGFILE
 stat $?
 
+echo -n "Downloading the $COMPONENT schema :"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $?
 
-# Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
+echo -n "Extracting the $COMPONENT schema"
+unzip $COMPONENT.zip   &>> LOGFILE
+stat $?
 
-# vim /etc/mongod.conf
-  
-
-# Every Database needs the schema to be loaded for the application to work.
-
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
-
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+echo -n "Injecting the $COMPONENT schema :"
+cd /tmp/$COMPONENT-main
+mongo < catalogue.js     &>> LOGFILE
+mongo < users.js         &>> LOGFILE
+stat $?
