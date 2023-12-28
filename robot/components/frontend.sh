@@ -6,7 +6,7 @@ set -e
 
 ID=$(id -u)
 if [ "$ID" -ne 0 ] ; then
-    echo -e "\e[32m You should execute it as root user or with a sudo prefix \e[0m"
+    echo -e "\e[31m You should execute it as root user or with a sudo prefix \e[0m"
     exit 1
 fi
 
