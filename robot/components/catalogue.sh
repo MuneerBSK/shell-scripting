@@ -29,11 +29,11 @@ yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release
 stat $?
 
 echo -n "Installing NodeJS :"
-yum install nodejs -y    $>> $LOGFILE
+yum install nodejs -y    &>> $LOGFILE
 stat $?
 
 echo -n "Creating the appilication user account :"
-useradd roboshop    $>> $LOGFILE
+useradd roboshop    &>> $LOGFILE
 stat $?
 
 echo -n "Downloading the $COMPONENT component :"
@@ -42,7 +42,7 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory:"
 cd /home/$APPUSER
-unzip -o /tmp/$COMPONENT.zip   $>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
 
