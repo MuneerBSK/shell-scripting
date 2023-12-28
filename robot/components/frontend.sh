@@ -11,7 +11,6 @@ if [ "$ID" -ne 0 ] ; then
 fi
 
 
-
 yum install nginx -y  &>> /tmp/frontend.log
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
