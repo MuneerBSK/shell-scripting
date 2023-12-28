@@ -69,9 +69,8 @@ systemctl enable $COMPONENT &>> $LOGFILE
 systemctl start $COMPONENT  &>> $LOGFILE
 stat $?
 
-# $ vim systemd.servce
 
-# 
+
 # systemctl daemon-reload
 # systemctl start catalogue
 # systemctl enable catalogue
