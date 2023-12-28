@@ -32,7 +32,7 @@ yum install nodejs -y    $>> $LOGFILE
 stat $?
 
 echo -n "Creating the appilication user account:"
-useradd $APPUSER    $>> $LOGFILE
+useradd roboshop    $>> $LOGFILE
 stat $?
 
 echo -n "Downloading the $COMPONENT component :"
