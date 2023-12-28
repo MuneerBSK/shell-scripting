@@ -33,13 +33,14 @@ systemctl enable mongod     &>> $LOGFILE
 systemctl start mongod      &>> $LOGFILE
 stat $?
 
-# Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
+echo -n "Updating the $COMPONENT visibility : "
+sed -i -e 's/127.0.0.1/0.0.0.0/' mongod.conf
+stat $?
 
-# Config file:   `# vim /etc/mongod.conf`
-
-
-# systemctl restart mongod
-
+echo -n "Performing Daemon-reload : "
+systemctl daemon-reload   $>> $LOGFILE
+systemctl restart mongod  $>> $LOGFILE
+stat $?
 
 # # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
 
