@@ -71,10 +71,6 @@ stat $?
 
 
 
-# systemctl daemon-reload
-# systemctl start catalogue
-# systemctl enable catalogue
-# systemctl status catalogue -l
 
 # NOTE: You should see the log saying `connected to MongoDB`
 
