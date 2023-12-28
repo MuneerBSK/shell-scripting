@@ -3,7 +3,9 @@
 set -e
 
 # validating whether the executed user is root user or not
-if [ "$EUID" -ne 0 ] ; then
+ID=$(id -u)
+
+if [ "$ID" -ne 0 ] ; then
     echo -e "\e[31m You should execute it as root user or with a sudo prefix \e[0m"
     exit 1
 fi
@@ -32,7 +34,7 @@ stat $?
 # systemctl enable mongod
 # systemctl start mongod
 
-1. Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
+# Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
 
 # vim /etc/mongod.conf
 
@@ -41,7 +43,7 @@ stat $?
 
   
 
-Every Database needs the schema to be loaded for the application to work.
+# Every Database needs the schema to be loaded for the application to work.
 
 # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
 
