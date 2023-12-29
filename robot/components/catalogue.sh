@@ -31,12 +31,10 @@ echo -n "Installing NodeJS :"
 yum install nodejs -y    &>> $LOGFILE
 stat $?
 
-id $APPUSER     &>> $LOGFILE
-if [ $? -ne 0 ]; then
-    echo -n "Creating the appilication user account :"
-    useradd $APPUSER    &>> $LOGFILE
-    stat $?
-fi 
+
+echo -n "Creating the appilication user account :"
+useradd $APPUSER    &>> $LOGFILE
+stat $? 
 
 echo -n "Downloading the $COMPONENT component :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
@@ -44,27 +42,26 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory:"
 cd /home/$APPUSER
-rm -rf /home/$APPUSER/$COMPONENT
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
-echo -n "Configuring the permissions :"
-mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
-chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
-stat $?
+# echo -n "Configuring the permissions :"
+# mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+# chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
+# stat $?
 
-echo -n "Installing the $COMPONENT application :"
-cd /home/$APPUSER/$COMPONENT/
-npm install   &>> $LOGFILE
-stat $?
+# echo -n "Installing the $COMPONENT application :"
+# cd /home/$APPUSER/$COMPONENT/
+# npm install   &>> $LOGFILE
+# stat $?
 
-echo -n "Updating the systemd file with DB details :"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
-mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
-stat $?
+# echo -n "Updating the systemd file with DB details :"
+# sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
+# mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+# stat $?
 
-echo -n "Starting the service :"
-systemctl daemon-reload     &>> $LOGFILE
-systemctl enable $COMPONENT &>> $LOGFILE
-systemctl start $COMPONENT  &>> $LOGFILE
-stat $?
+# echo -n "Starting the service :"
+# systemctl daemon-reload     &>> $LOGFILE
+# systemctl enable $COMPONENT &>> $LOGFILE
+# systemctl start $COMPONENT  &>> $LOGFILE
+# stat $?
