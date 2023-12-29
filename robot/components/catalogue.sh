@@ -54,10 +54,10 @@ mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
-# echo -n "Installing the $COMPONENT application :"
-# cd /home/$APPUSER/$COMPONENT/
-# npm install   &>> $LOGFILE
-# stat $?
+echo -n "Installing the $COMPONENT application :"
+cd /home/$APPUSER/$COMPONENT
+npm install   &>> $LOGFILE
+stat $?
 
 # echo -n "Updating the systemd file with DB details :"
 # sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
