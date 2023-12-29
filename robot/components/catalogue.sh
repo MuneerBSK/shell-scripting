@@ -32,9 +32,12 @@ yum install nodejs -y    &>> $LOGFILE
 stat $?
 
 
-echo -n "Creating the appilication user account :"
-useradd $APPUSER    &>> $LOGFILE
-stat $? 
+id $APPUSER
+if [ $? -ne 0 ]; then
+   echo -n "Creating the appilication user account :"
+   useradd $APPUSER    &>> $LOGFILE
+   stat $? 
+fi
 
 echo -n "Downloading the $COMPONENT component :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
