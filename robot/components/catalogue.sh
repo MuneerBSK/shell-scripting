@@ -24,7 +24,7 @@ stat () {
 }
 
 echo -n "Configuring the nodejs repo :"
-curl --silent --location https://rpm.nodesource.com/setup_16.x | bash - &>> $LOGFILE
+curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -  &>> $LOGFILE
 stat $?
 
 echo -n "Installing NodeJS :"
@@ -34,7 +34,7 @@ stat $?
 id $APPUSER     &>> $LOGFILE
 if [ $? -ne 0 ]; then
     echo -n "Creating the appilication user account :"
-    useradd roboshop    &>> $LOGFILE
+    useradd $APPUSER    &>> $LOGFILE
     stat $?
 fi 
 
