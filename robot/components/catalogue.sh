@@ -59,13 +59,13 @@ cd /home/$APPUSER/$COMPONENT
 npm install   &>> $LOGFILE
 stat $?
 
-# echo -n "Updating the systemd file with DB details :"
-# sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
-# mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
-# stat $?
+echo -n "Updating the systemd file with DB details :"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
 
-# echo -n "Starting the service :"
-# systemctl daemon-reload     &>> $LOGFILE
-# systemctl enable $COMPONENT &>> $LOGFILE
-# systemctl start $COMPONENT  &>> $LOGFILE
-# stat $?
+echo -n "Starting the $COMPONENT service :"
+systemctl daemon-reload     &>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
+systemctl start $COMPONENT  &>> $LOGFILE
+stat $?
