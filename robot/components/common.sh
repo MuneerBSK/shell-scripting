@@ -10,6 +10,7 @@ if [ "$ID" -ne 0 ] ; then
 fi
 
 stat () {
+    
     if [ $1 -eq 0 ] ; then
         echo -e "\e[32m $2: Success \e[0m"
     else
@@ -49,6 +50,7 @@ DOWNLOAD_AND_EXTRACT() {
 }
 
 NPM_INSTALL () {
+
     echo -n "Installing the $COMPONENT application :"
     cd /home/$APPUSER/$COMPONENT
     npm install   &>> $LOGFILE
@@ -72,6 +74,7 @@ CONFIG_SVC() {
 }
 
 MVN_PACKAGE() {
+
     echo -n "Creating the $COMPONENT Package :"
     cd /home/$APPUSER/$COMPONENT/ 
     mvn clean package  &>> $LOGFILE
@@ -80,6 +83,7 @@ MVN_PACKAGE() {
 }
 
 JAVA() {
+
     echo -n "Installing Maven  :" 
     yum install maven -y &>> $LOGFILE
     stat $?
@@ -107,7 +111,6 @@ NODEJS() {
     echo -n "Installing NodeJS :"
     yum install nodejs -y    &>> $LOGFILE
     stat $?
-
 
     # Calling Create-User Functon 
     CREATE_USER
