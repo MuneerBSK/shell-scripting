@@ -31,12 +31,11 @@ echo -n "Installing NodeJS :"
 yum install nodejs -y    &>> $LOGFILE
 stat $?
 
-
 id $APPUSER
 if [ $? -ne 0 ]; then
-echo -n "Creating the appilication user account :"
-useradd $APPUSER       &>> $LOGFILE
-stat $? 
+    echo -n "Creating the application user account :"
+    useradd $APPUSER    &>> $LOGFILE
+    stat $? 
 fi
 
 echo -n "Downloading the $COMPONENT component :"
