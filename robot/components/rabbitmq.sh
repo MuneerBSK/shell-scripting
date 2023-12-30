@@ -20,10 +20,12 @@ systemctl enable $COMPONENT-server   &>> $LOGFILE
 systemctl start $COMPONENT-server    &>> $LOGFILE
 stat $?
 
-echo -n "Creating $COMPONENT application user :"
-rabbitmqctl add_user roboshop roboshop123             &>> $LOGFILE
-rabbitmqctl set_user_tags roboshop administrator      &>> $LOGFILE
-stat $?
+rabbitmqctl list_users | grep $APPUSER                &>> $LOGFILE
+if [ $? -ne 0 ] ; then
+    echo -n "Creating $COMPONENT application user :"
+    rabbitmqctl add_user roboshop roboshop123             &>> $LOGFILE
+    stat $?
+fi
 
 
 # # 
