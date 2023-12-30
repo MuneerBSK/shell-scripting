@@ -15,7 +15,7 @@ echo -n "Installing $COMPONENT :"
 yum install $COMPONENT-server -y   &>> $LOGFILE
 stat $?
 
-echo -n"Starting $COMPONENT :"
+echo -n "Starting $COMPONENT :"
 systemctl enable $COMPONENT-server   &>> $LOGFILE
 systemctl start $COMPONENT-server    &>> $LOGFILE
 stat $?
