@@ -10,7 +10,7 @@ if [ "$ID" -ne 0 ] ; then
 fi
 
 stat () {
-    
+
     if [ $1 -eq 0 ] ; then
         echo -e "\e[32m $2: Success \e[0m"
     else
@@ -125,6 +125,3 @@ NODEJS() {
     CONFIG_SVC
 
 }
-
-
-
