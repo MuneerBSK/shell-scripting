@@ -30,17 +30,17 @@ CREATE_USER() {
 }
 
 
-DOWNLOAD_AND_EXTRACT () {
+DOWNLOAD_AND_EXTRACT() {
 
     echo -n "Downloading the $COMPONENT component :"
     curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
-    stat $?
+    stat $? 
 
-    echo -n "Extracting the $COMPONENT in the $APPUSER directory:"
-    cd /home/$APPUSER
-    rm -rf /home/$APPUSER/$COMPONENT  &>> $LOGFILE
-    unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
-    stat $?
+    echo -n "Extracting the $COMPONENT in the $APPUSER directory"
+    cd /home/$APPUSER 
+    rm -rf /home/$APPUSER/$COMPONENT &>> $LOGFILE
+    unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
+    stat $? 
 
     echo -n "Configuring the permissions :"
     mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
@@ -72,7 +72,6 @@ CONFIG_SVC() {
 
 }
 
-
 NODEJS() {
 
     echo -n "Configuring the nodejs repo :"
@@ -83,7 +82,8 @@ NODEJS() {
     yum install nodejs -y    &>> $LOGFILE
     stat $?
 
-    # Calling create-user function
+
+    # Calling Create-User Functon 
     CREATE_USER
 
     # Calling Download_And_Extract Function
@@ -91,7 +91,7 @@ NODEJS() {
 
     # Calling NPM install function
     NPM_INSTALL
-    
+
     # Calling Config-Svc Function
     CONFIG_SVC
 
