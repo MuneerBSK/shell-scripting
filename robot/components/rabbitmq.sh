@@ -27,9 +27,11 @@ if [ $? -ne 0 ] ; then
     stat $?
 fi
 
+echo -n "Adding required privileges to $APPUSER :"
+rabbitmqctl set_user_tags roboshop administrator
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+stat $?
 
-# # 
-# # rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 # ​
 # Ref link : https://www.rabbitmq.com/rabbitmqctl.8.html#User_Management
 # We are good with rabbitmq.Next component is PAYMENT
