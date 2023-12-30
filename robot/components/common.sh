@@ -72,6 +72,14 @@ CONFIG_SVC() {
 
 }
 
+MVN_PACKAGE() {
+    echo -n "Creating the $COMPONENT Package :"
+    cd /home/$APPUSER/$COMPONENT/ 
+    mvn clean package  &>> $LOGFILE
+    mv target/shipping-1.0.jar shipping.jar
+    stat $?   
+}
+
 JAVA() {
     echo -n "Installing Maven  :" 
     yum install maven -y &>> $LOGFILE
