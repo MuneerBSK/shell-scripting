@@ -72,6 +72,25 @@ CONFIG_SVC() {
 
 }
 
+JAVA() {
+    echo -n "Installing Maven  :" 
+    yum install maven -y &>> $LOGFILE
+    stat $?
+
+    # Calling Create-User Functon 
+    CREATE_USER
+
+    # Calling Download_And_Extract Function
+    DOWNLOAD_AND_EXTRACT
+
+    # Calling Maven Package Functon
+    MVN_PACKAGE
+
+    # Calling Config-Svc Function
+    CONFIG_SVC
+
+}
+
 NODEJS() {
 
     echo -n "Configuring the nodejs repo :"
