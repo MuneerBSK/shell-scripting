@@ -39,10 +39,10 @@ echo -n "Updating the $COMPONENT visibility : "
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat $? 
 
-# echo -n "Performing Daemon-Reload : "
-# systemctl daemon-reload  &>> $LOGFILE
-# systemctl restart mongod 
-# stat $?
+echo -n "Performing Daemon-Reload : "
+systemctl daemon-reload  &>> $LOGFILE
+systemctl restart mongod 
+stat $?
 
 # echo -n "Downloading the  $COMPONENT schema :"
 # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
