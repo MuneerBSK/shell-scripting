@@ -2,7 +2,7 @@
 
 # set -e 
 
-COMPONENT=mongo
+COMPONENT=mongodb
 LOGFILE="/tmp/$COMPONENT.log"
 
 # Validting whether the executed user is a root user or not 
@@ -44,9 +44,9 @@ systemctl daemon-reload  &>> $LOGFILE
 systemctl restart mongod 
 stat $?
 
-# echo -n "Downloading the  $COMPONENT schema :"
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
-# stat $? 
+echo -n "Downloading the  $COMPONENT schema :"
+curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $? 
 
 # echo -n "Extracting the $COMPONENT schema : "
 # cd /tmp 
