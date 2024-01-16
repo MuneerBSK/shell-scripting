@@ -2,7 +2,7 @@
 
 # set -e 
 
-COMPONENT=mongodb
+COMPONENT=mongo
 LOGFILE="/tmp/$COMPONENT.log"
 
 # Validting whether the executed user is a root user or not 
