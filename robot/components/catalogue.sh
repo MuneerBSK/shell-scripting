@@ -27,7 +27,7 @@ echo -n "Configuring the nodejs repo :"
 curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -  &>> $LOGFILE
 stat $?
 
-Echo -n "Installing nodejs :"
+echo -n "Installing nodejs :"
 yum install nodejs -y   &>> $LOGFILE
 stat $?
 
