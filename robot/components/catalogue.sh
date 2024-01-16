@@ -47,8 +47,13 @@ cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
  
+echo -n "Configuring the permissions :"
+mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
+stat $?
 
-# $ mv catalogue-main catalogue
+
+# $ 
 # $ cd /home/roboshop/catalogue
 # $ npm install
 # ```
