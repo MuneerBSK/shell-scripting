@@ -53,28 +53,27 @@ mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
+echo -n "Installing the $COMPONENT application :"
+cd /home/$APPUSER/$COMPONENT   
+npm install            &>> $LOGFILE
+stat $?
 
-# $ 
-# $ cd /home/roboshop/catalogue
-# $ npm install
-# ```
+echo -n "Updating the systemd file with DB details :"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
 
-# 1. Update SystemD file with correct IP addresses
-    
-#     Update `MONGO_DNSNAME` with MongoDB Server IP
-    
-#     ```sql
+echo -n "Starting the service :"
+systemctl daemon-reload   &>> $LOGFILE
+systemctl enable catalogue   &>> $LOGFILE
+systemctl start catalogue   &>> $LOGFILE
+stat $?
+
+
 #     $ vim systemd.servce
 #     ```
     
-# 2. Now, lets set up the service with systemctl.
-
-# ```bash
-# # mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-# # systemctl daemon-reload
-# # systemctl start catalogue
-# # systemctl enable catalogue
-# # systemctl status catalogue -l
+# # 
 
 # **NOTE:** You should see the log saying `connected to MongoDB`
 
