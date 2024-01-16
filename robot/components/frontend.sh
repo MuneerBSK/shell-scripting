@@ -4,6 +4,7 @@ set -e
 
 # validating whether the executed user is a root user or not
 ID=$(id -u)
+
 if [ "$ID" -ne 0 ] ; then
     echo -e "\e[32m You should  execute as root user \e[0m"
     exit 1
@@ -21,7 +22,7 @@ if
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
 cd /usr/share/nginx/html
-rm -rf *
+rm -rf *     &>> /tmp/frontend.log
 unzip /tmp/frontend.zip   &>> /tmp/frontend.log
 mv frontend-main/* .
 mv static/* .
