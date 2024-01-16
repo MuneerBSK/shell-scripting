@@ -24,7 +24,7 @@ stat() {
 }
 
 echo -n "Configuring the nodejs repo :"
-yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y  &>> $LOGFILE
+yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y    &>> $LOGFILE
 stat $?
 
 Echo -n "Installing nodejs :"
