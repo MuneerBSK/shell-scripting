@@ -1,7 +1,5 @@
 #!/bin/bash 
 
-# set -e 
-
 COMPONENT=user
 LOGFILE="/tmp/$COMPONENT.log"
 APPUSER=roboshop
