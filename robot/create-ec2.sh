@@ -18,5 +18,5 @@ echo "Launching the instance with $AMI_ID as AMI :"
 aws ec2 run-instances \
     --image-id $AMI_ID \
     --instance-type t2.micro \
-    ----security-group-ids \
+    --security-group-ids \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq
