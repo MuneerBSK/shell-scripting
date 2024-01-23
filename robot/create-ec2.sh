@@ -16,12 +16,12 @@ SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-all
 echo "Ami ID is $AMI_ID"
 
 echo "Launching the instance with $AMI_ID as AMI :"
-aws ec2 run-instances \
+IPADDRESS=$(aws ec2 run-instances \
     --image-id $AMI_ID \
     --instance-type t2.micro \
     --security-group-ids ${SGID} \
     --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
 sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${IPADDRESS}/" route53.json > /tmp/r53.json
 aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONEID --change-batch file:///tmp/r53.json | jq
