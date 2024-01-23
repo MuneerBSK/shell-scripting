@@ -15,6 +15,8 @@ SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-all
 echo "Ami ID is $AMI_ID"
 
 echo "Launching the instance with $AMI_ID as AMI :"
-
-instance_id=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq -r '.Instances[].InstanceId')
-echo "Instance ID is $instance_id"
+aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --instance-type t2.micro \
+    ----security-group-ids \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq
