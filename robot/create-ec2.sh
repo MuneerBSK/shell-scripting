@@ -34,3 +34,5 @@ if [ "$1" == "all" ] ; then
 
 else 
         create_server
+
+fi 
