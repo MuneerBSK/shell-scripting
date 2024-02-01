@@ -10,6 +10,7 @@ fi
 
 COMPONENT=$1
 HOSTEDZONEID="Z02407882HMY5LE1XLJU5"
+ENV=$2
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq -r '.Images[].ImageId')
 SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-allow-all-sg  | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
@@ -26,9 +27,9 @@ create_server() {
         --instance-type t2.micro \
         --security-group-ids ${SGID} \
         --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
-        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT-$ENV}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
-    sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${IPADDRESS}/" robot/record.json > /tmp/record.json
+    sed -e "s/COMPONENT/${COMPONENT}-${ENV}/" -e "s/IPADDRESS/${IPADDRESS}/" robot/record.json > /tmp/record.json
     aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONEID --change-batch file:///tmp/record.json | jq
 
     echo "*** $COMPONENT Server Completed ***"
